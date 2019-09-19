@@ -2,6 +2,7 @@ let cardList = new Array('angularCard','jsCard','flutterCard','javaCard','larave
 'angularCard','jsCard','flutterCard','javaCard','laravelCard','reactCard','sprinCard','vueCard');
 let firstCard=0, secondCard=0, secondCardId, firstCardId; c=0;clickDisabled = true, 
 gameStarted = false, playerCounter = 0, scorePlayer1 = 0, scorePlayer2 = 0;
+cardList = shuffle(cardList);
 
 function hideButton(){
   let btnElement=document.getElementById(`buttonPlay`);
@@ -13,7 +14,7 @@ function showButton(){
   btnElement.style.display = "inline-block";
 }
 function restartGame(){
-  cardList = shuffle(cardList);
+	cardList = shuffle(cardList);
   firstCard=0, secondCard=0, c = 0, clickDisabled = true, 
   playerCounter = 0, scorePlayer1 = 0, scorePlayer2 = 0;
   var element=document.getElementById(`score`);
@@ -25,7 +26,6 @@ function startGame(){
   }
   hideButton();
     setTimeout(() => {
-      cardList = shuffle(cardList);
       for(let i =0; i < 16; i++){
         var element=document.getElementById(`carta ${i}`);  
         element.src = `./assets/${cardList[i]}.png`;
