@@ -1,6 +1,6 @@
 let cardList = new Array('angularCard','jsCard','flutterCard','javaCard','laravelCard','reactCard','sprinCard','vueCard',
 'angularCard','jsCard','flutterCard','javaCard','laravelCard','reactCard','sprinCard','vueCard');
-let firstCard=0, secondCard=0, secondCardId, firstCardId; c=0;clickDisabled = true, 
+let firstCard=0, secondCard=0, secondCardId, firstCardId; counterMatches=0;clickDisabled = true, 
 gameStarted = false, playerCounter = 0, scorePlayer1 = 0, scorePlayer2 = 0;
 cardList = shuffle(cardList);
 
@@ -15,7 +15,7 @@ function showButton(){
 }
 function restartGame(){
 	cardList = shuffle(cardList);
-  firstCard=0, secondCard=0, c = 0, clickDisabled = true, 
+  firstCard=0, secondCard=0, counterMatches = 0, clickDisabled = true, 
   playerCounter = 0, scorePlayer1 = 0, scorePlayer2 = 0;
   var element=document.getElementById(`score`);
   element.innerHTML = `Pontuação Jogador 1: ${scorePlayer1}<br>Pontuação Jogador 2: ${scorePlayer2}`;
@@ -71,7 +71,7 @@ function cardClick(a){
           scorePlayer2++;
         else
           scorePlayer1++;
-        c++;
+        counterMatches++;
         firstCard = 0;
         secondCard = 0;
         var element=document.getElementById(`score`);
@@ -79,7 +79,7 @@ function cardClick(a){
         console.log(`Pontuação player 1 ${scorePlayer1}`);
         console.log(`Pontuação player 2 ${scorePlayer2}`);
       }
-      if (c === 8){
+      if (counterMatches === 8){
         setTimeout(function(){
           if(scorePlayer1 > scorePlayer2)
             alert(`Fim do Jogo\nJogador 1 ganhou!!\nResultado do jogo: ${scorePlayer1} a ${scorePlayer2}`);
