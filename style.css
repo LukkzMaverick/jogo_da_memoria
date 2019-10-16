@@ -20,6 +20,10 @@ table{
     margin-right: auto;
     text-align: center;
 }
+button{
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
 #score{
     color: white;
     font-size: 22px;
