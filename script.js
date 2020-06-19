@@ -27,14 +27,14 @@ function startGame() {
   hideButton();
   setTimeout(() => {
     for (let i = 0; i < 16; i++) {
-      var element = document.getElementById(`carta ${i}`);
-      element.src = `./assets/${cardList[i]}.png`;
+      const carta = document.getElementById(`carta ${i}`);
+      carta.src = `./assets/${cardList[i]}.png`;
     }
   }, 100);
   setTimeout(() => {
     for (let i = 0; i < 16; i++) {
-      var element = document.getElementById(`carta ${i}`);
-      element.src = "./assets/backcard.jpg";
+      const carta = document.getElementById(`carta ${i}`);
+      carta.src = "./assets/backcard.jpg";
     }
   }, 2000);
   clickDisabled = false;
