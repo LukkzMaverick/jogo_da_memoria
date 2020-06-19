@@ -5,13 +5,13 @@ let firstCardContent = '', secondCardContent = '', secondCardElement, firstCardE
 cardList = shuffle(cardList);
 
 function hideButton() {
-  let btnElement = document.getElementById(`buttonPlay`);
-  btnElement.style.display = "none";
+  let buttonElement = document.getElementById(`buttonPlay`);
+  buttonElement.style.display = "none";
 }
 function showPlayButton() {
-  let btnElement = document.getElementById(`buttonPlay`);
-  btnElement.innerHTML = "Reiniciar";
-  btnElement.style.display = "inline-block";
+  let buttonElement = document.getElementById(`buttonPlay`);
+  buttonElement.innerHTML = "Reiniciar";
+  buttonElement.style.display = "inline-block";
 }
 function restartGame() {
   cardList = shuffle(cardList);
@@ -27,43 +27,43 @@ function startGame() {
   hideButton();
   setTimeout(() => {
     for (let i = 0; i < 16; i++) {
-      const carta = document.getElementById(`carta ${i}`);
-      carta.src = `./assets/${cardList[i]}.png`;
+      const card = document.getElementById(`carta ${i}`);
+      card.src = `./assets/${cardList[i]}.png`;
     }
   }, 100);
   setTimeout(() => {
     for (let i = 0; i < 16; i++) {
-      const carta = document.getElementById(`carta ${i}`);
-      carta.src = "./assets/backcard.jpg";
+      const card = document.getElementById(`carta ${i}`);
+      card.src = "./assets/backcard.jpg";
     }
   }, 2000);
   clickDisabled = false;
   gameStarted = true;
 }
-function cardClick(idCarta) {
+function cardClicked(cardId) {
   if (clickDisabled)
     return;
-  const carta = document.getElementById(`carta ${idCarta}`);
-  const cartaNaoClicada = carta.src.match("backcard")
-  if (cartaNaoClicada) {
-    virarCarta();
+  const card = document.getElementById(`card ${cardId}`);
+  const cardNotClicked = card.src.match("backcard")
+  if (cardNotClicked) {
+    turnCard();
     const firstCardNotClicked = firstCardContent === ''
     const secondCardNotClicked = secondCardContent === ''
     if (firstCardNotClicked) {
-      firstCardContent = cardList[idCarta];
-      firstCardElement = carta;
+      firstCardContent = cardList[cardId];
+      firstCardElement = card;
     } else if (secondCardNotClicked) {
-      secondCardContent = cardList[idCarta];
-      secondCardElement = carta;
+      secondCardContent = cardList[cardId];
+      secondCardElement = card;
     }
   }
-  const ambasCartasClicadas = firstCardContent !== '' && secondCardContent !== '';
-  if (ambasCartasClicadas) {
+  const bothCardClicked = firstCardContent !== '' && secondCardContent !== '';
+  if (bothCardClicked) {
     playerCounter++;
     if (firstCardContent !== secondCardContent) {
       clickDisabled = true;
       setTimeout(function () {
-        desvirarCartas();
+        untapCards();
         resetCardsContent();
         clickDisabled = false;
       }, 700);
@@ -75,20 +75,20 @@ function cardClick(idCarta) {
         scorePlayer1++;
       counterMatches++;
       resetCardsContent();
-      exibirMensagemPontuacao();
+      displayScoreMessage();
     }
     if (counterMatches === 8) {
-      mostrarMensagemFimDoJogo();
+      displayGameOverMessage();
     }
   }
 
-  function desvirarCartas() {
+  function untapCards() {
     firstCardElement.src = "./assets/backcard.jpg";
     secondCardElement.src = "./assets/backcard.jpg";
   }
 
-  function virarCarta() {
-    carta.src = `./assets/${cardList[idCarta]}.png`;
+  function turnCard() {
+    card.src = `./assets/${cardList[cardId]}.png`;
   }
 
   function resetCardsContent() {
@@ -96,12 +96,12 @@ function cardClick(idCarta) {
     secondCardContent = '';
   }
 
-  function exibirMensagemPontuacao() {
+  function displayScoreMessage() {
     let pontuacao = document.getElementById(`score`);
     pontuacao.innerHTML = `Pontuação Jogador 1: ${scorePlayer1}<br>Pontuação Jogador 2: ${scorePlayer2}`;
   }
 
-  function mostrarMensagemFimDoJogo() {
+  function displayGameOverMessage() {
     setTimeout(function () {
       if (scorePlayer1 > scorePlayer2)
         alert(`Fim do Jogo\nJogador 1 ganhou!!\nResultado do jogo: ${scorePlayer1} a ${scorePlayer2}`);
