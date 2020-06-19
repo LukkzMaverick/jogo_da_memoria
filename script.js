@@ -97,8 +97,8 @@ function cardClicked(cardId) {
   }
 
   function displayScoreMessage() {
-    let pontuacao = document.getElementById(`score`);
-    pontuacao.innerHTML = `Pontuação Jogador 1: ${scorePlayer1}<br>Pontuação Jogador 2: ${scorePlayer2}`;
+    let score = document.getElementById(`score`);
+    score.innerHTML = `Pontuação Jogador 1: ${scorePlayer1}<br>Pontuação Jogador 2: ${scorePlayer2}`;
   }
 
   function displayGameOverMessage() {
