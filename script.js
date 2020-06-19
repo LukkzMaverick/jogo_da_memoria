@@ -8,7 +8,7 @@ function hideButton() {
   let btnElement = document.getElementById(`buttonPlay`);
   btnElement.style.display = "none";
 }
-function showButton() {
+function showPlayButton() {
   let btnElement = document.getElementById(`buttonPlay`);
   btnElement.innerHTML = "Reiniciar";
   btnElement.style.display = "inline-block";
@@ -109,7 +109,7 @@ function cardClick(idCarta) {
         alert(`Fim do Jogo\nJogador 2 ganhou!!\nResultado do jogo: ${scorePlayer2} a ${scorePlayer1}`);
       else
         alert("Fim do Jogo\nEmpate.");
-      showButton();
+      showPlayButton();
     }, 1200);
   }
 }
