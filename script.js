@@ -27,13 +27,16 @@ function startGame() {
   hideButton();
   setTimeout(() => {
     for (let i = 0; i < 16; i++) {
-      const card = document.getElementById(`carta ${i}`);
+      console.log(cardList[i])
+      console.log(i)
+      const card = document.getElementById(`card ${i}`);
+      console.log(card)
       card.src = `./assets/${cardList[i]}.png`;
     }
   }, 100);
   setTimeout(() => {
     for (let i = 0; i < 16; i++) {
-      const card = document.getElementById(`carta ${i}`);
+      const card = document.getElementById(`card ${i}`);
       card.src = "./assets/backcard.jpg";
     }
   }, 2000);
